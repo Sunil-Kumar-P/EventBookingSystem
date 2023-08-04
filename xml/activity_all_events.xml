@@ -4,10 +4,21 @@
     android:layout_height="match_parent">
 
     <!-- Toolbar with Hamburger Icon -->
+
+    <!-- Navigation View -->
+
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="-4dp"
+        android:layout_marginEnd="-103dp"
         android:background="?attr/colorPrimary"
         android:elevation="4dp">
 
@@ -16,8 +27,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|center_vertical"
-            android:src="@drawable/menuham"
-            android:padding="8dp" />
+            android:layout_margin="8dp"
+            android:padding="1dp"
+            android:src="@drawable/menuham" />
 
         <TextView
             android:id="@+id/toolbar_title"
@@ -26,12 +38,17 @@
             android:layout_gravity="center"
             android:text="ETBS"
             android:textColor="#fff"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
+        <ImageView
+            android:id="@+id/logoImageView2"
+            android:layout_width="56dp"
+            android:layout_height="51dp"
+            android:background="@color/black"
+            android:src="@drawable/img" />
     </androidx.appcompat.widget.Toolbar>
 
-    <!-- Navigation View -->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_view"
         android:layout_width="wrap_content"
@@ -120,14 +137,5 @@
     </ScrollView>
 
     <!-- Error Message TextView -->
-    <TextView
-        android:id="@+id/error_message_textview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:padding="16dp"
-        android:textSize="16sp"
-        android:textColor="@color/error_color"
-        android:gravity="center" />
 
 </RelativeLayout>

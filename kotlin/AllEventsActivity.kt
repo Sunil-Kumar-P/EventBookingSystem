@@ -46,12 +46,11 @@ class AllEventsActivity : AppCompatActivity() {
         hostEventBtn = findViewById(R.id.host_event_button)
         profileBtn = findViewById(R.id.profile_button)
         eventCardsContainer = findViewById(R.id.event_cards_container)
-        errorMessageTextView = findViewById(R.id.error_message_textview)
 
         logoutBtn.visibility = View.GONE // Hide the logout button initially
         hostEventBtn.visibility = View.GONE // Hide the host event button initially
         navigationView.visibility = View.GONE
-        errorMessageTextView.visibility = View.GONE
+
 
         menuIcon.setOnClickListener {
             toggleVisibility(navigationView)
@@ -83,7 +82,7 @@ class AllEventsActivity : AppCompatActivity() {
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 eventCardsContainer.removeAllViews() // Clear existing event cards
-                errorMessageTextView.visibility = View.GONE
+
 
                 for (eventSnapshot in snapshot.children) {
                     val event = eventSnapshot.getValue(EventModel::class.java)
@@ -106,8 +105,7 @@ class AllEventsActivity : AppCompatActivity() {
                 // Handle database read error
                 val errorMessage = "Database read error: ${error.message}"
                 Toast.makeText(this@AllEventsActivity, errorMessage, Toast.LENGTH_SHORT).show()
-                errorMessageTextView.text = errorMessage
-                errorMessageTextView.visibility = View.VISIBLE
+
             }
         })
     }

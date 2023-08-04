@@ -10,9 +10,9 @@
 
     <ImageView
         android:id="@+id/logoImageView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        />
+        android:layout_width="346dp"
+        android:layout_height="234dp"
+        android:src="@drawable/img" />
 
     <EditText
         android:id="@+id/emailEditText"

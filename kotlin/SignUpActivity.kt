@@ -15,7 +15,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 
 class SignUpActivity : AppCompatActivity() {
-    private  lateinit var  un:EditText
+    private lateinit var un: EditText
     private lateinit var signupEmailEditText: EditText
     private lateinit var signupPasswordEditText: EditText
     private lateinit var signupButton: Button
@@ -25,12 +25,11 @@ class SignUpActivity : AppCompatActivity() {
 
     public override fun onStart() {
         super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
         if (currentUser != null) {
             val intent = Intent(this, AllEventsActivity::class.java)
             startActivity(intent)
-            finish() // Close the current activity to prevent going back to the login screen
+            finish()
         }
     }
 
@@ -38,7 +37,6 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
-        // Initialize Firebase components
         auth = Firebase.auth
         database = FirebaseDatabase.getInstance().reference
 
@@ -59,15 +57,13 @@ class SignUpActivity : AppCompatActivity() {
                         if (task.isSuccessful) {
                             val userId = auth.currentUser?.uid
                             if (userId != null) {
-                                // Create a user entry in the "users" table with the user ID
                                 val userRef = database.child("users").child(userId)
                                 userRef.child("username").setValue(username)
                                 userRef.child("email").setValue(email)
 
-
                                 val intent = Intent(this, MainActivity::class.java)
                                 startActivity(intent)
-                                finish() // Close the current activity to prevent going back to the signup screen
+                                finish()
                                 Toast.makeText(this, "Signup Successful", Toast.LENGTH_SHORT).show()
                             }
                         } else {
